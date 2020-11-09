@@ -2,28 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Original Flappy Bird -JavaScript</title>
-    <link href="https://fonts.googleapis.com/css?family=Teko:700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/e77f75aba8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <title>Original Flappy Bird -JavaScript</title>
+    
 </head>
 <body>
 
     <!-- Welcome screen-->
     <section id="startscreen" class="game-info">
-        <h2>Flappy</h2>
-        <h2>Bird</h2>
+        <div id="game-name">
+            <h2>Flappy</h2>
+            <h2>Bird</h2>
+        </div>
         <div id="avatar"></div>
-        <p class="instruction">Press the space key or tap to avoid the pipes.</p>
+        <p id="instruction">Press the space key or tap to avoid the pipes.</p>
         <div class="buttons">
             <button type="button" name="button" id="play-button">Play</button>
             <button type="button" class="sound-button"><i class="fas fa-volume-up"></i></button>
         </div>
     </section>
-    <!--../Welcome screen-->  
+    <!--../Welcome screen--> 
+
+    <!--Game over screen-->
+    <section id="endscreen" class="game-info" >
+            <h2>Game Over</h2>
+            <div class="scoreboard">  
+                <p class="score">Score:</p>
+                <p class="score">5</p>
+                <p class="score">Best score:</p>
+                <p class="score">15</p>
+            </div>
+            <div class="buttons">
+                <button type="button" class="play-button">Play</button>
+                <button type="button" class="sound-button"><i class="fas fa-volume-up"></i></button>
+            </div>
+        </section> 
+        <!--../Game over screen--> 
 
     <!--The game in canvas-->        
-    <div id="wrapper">
-        <div id="container">
+    <div class="wrapper">
+        <div class="container">
             <canvas id="bird" width="786" height="685"></canvas>
         </div>
     </div>

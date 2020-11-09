@@ -4,7 +4,8 @@ const ctx = cvs.getContext("2d");
 
 // DOM Elements 
 const startScreen = document.getElementById('startscreen');
-const startBtn = document.getElementById('play-button')
+const endScreen = document.getElementById('endscreen')
+endScreen.remove();
 
 // Variables
 let frames = 0;
@@ -38,8 +39,6 @@ document.getElementById('play-button').onclick = function() {
 function removeStartscreen() {
     startScreen.remove();
 }
-
-
 
 // Control the game 
 cvs.addEventListener('click', function(evt) {
@@ -211,6 +210,14 @@ const gameOver = { // change to own design
         if(state.current == state.over) {
             ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         } 
+    }
+}
+
+// Game over 
+function isGameOver() {
+    if(state.current == state.over) {
+        console.log('game over')
+        document.getElementById('startscreen')
     }
 }
 
