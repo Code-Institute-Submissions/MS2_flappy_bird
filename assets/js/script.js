@@ -18,6 +18,14 @@ const state = {
     over : 2
 }
 
+// Start button 
+const startBtn = {
+    x : 120,
+    y : 163,
+    w : 83,
+    h : 29
+}
+
 // Control the game 
 cvs.addEventListener('click', function(evt) {
     switch(state.current) {
@@ -28,8 +36,18 @@ cvs.addEventListener('click', function(evt) {
                 bird.flap();
                 break;
         case state.over:
+            let rect = cvs.getBoundingClientRect();
+            let clickX = evt.clientX - rect.left;
+            let clickY = evt.clientY - rect.top;
+
+            // Check if we click on the start button 
+            if(clickX >= startBtn.x && clickX <= startBtn.x + startBtn.w && clickY > startBtn.y && clickY <= startBtn.y + startBtn.h){
+                pipes.reset();
+                bird.speedReset();
+                score.reset();
                 state.current = state.getReady;
-                break;
+            }
+            break;
     }
 
 });
@@ -88,6 +106,8 @@ const bird = {
     w : 34,
     h : 26,
 
+    radius : 12,
+
     frame : 0,
 
     gravity : 0.25,  // speed of bird
@@ -141,6 +161,9 @@ const bird = {
                 this.rotation = -25 * DEGREE;
             }
         }
+    },
+    speedReset : function(){
+        this.speed = 0;
     }
 }
 
@@ -176,22 +199,134 @@ const gameOver = { // change to own design
     }
 }
 
+// pipes 
+const pipes = {
+    position : [],
+
+    top : {
+        sX : 553,
+        sY : 0
+    },
+
+    bottom : {
+        sX : 502,
+        sY : 0,
+    },
+
+    w : 53, 
+    h : 400, 
+    gap : 100,  // the size of the gap 
+    maxYPos : -150,
+    dx : 4,     // afstand en snelheid tussen the pipes | in original is dit 2
+
+    draw : function(){
+        for(let i  = 0; i < this.position.length; i++){
+            let p = this.position[i];
+            
+            let topYPos = p.y;
+            let bottomYPos = p.y + this.h + this.gap;
+            
+            // top pipe
+            ctx.drawImage(sprite, this.top.sX, this.top.sY, this.w, this.h, p.x, topYPos, this.w, this.h);  
+            
+            // bottom pipe
+            ctx.drawImage(sprite, this.bottom.sX, this.bottom.sY, this.w, this.h, p.x, bottomYPos, this.w, this.h);  
+        }
+    },
+    
+
+   update: function(){
+        if(state.current !== state.game) return;
+        
+        if(frames%100 == 0){
+            this.position.push({
+                x : cvs.width,
+                y : this.maxYPos * ( Math.random() + 1)  // random gaps 
+            });
+        }
+        for(let i = 0; i < this.position.length; i++){
+            let p = this.position[i];
+
+            let bottomPipeYPos = p.y + this.h + this.gap;
+
+            // Collision detection | When bird hits a pipe
+            // Top pipe
+            if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h){
+                state.current = state.over;
+            }
+            // Bottom pipe
+            if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h){
+                state.current = state.over;
+            }
+
+            // Move the pipe to the left | snelheid, heeft te maken met de dx
+            p.x -= this.dx;
+
+            // If the pipe goes beyond the canvas, they will get delete 
+            if(p.x + this.w <= 0){
+                this.position.shift();
+                score.value += 1;
+
+                score.best = Math.max(score.value, score.best);
+                localStorage.setItem('best', score.best);
+            }
+        }
+    },
+    reset : function() {
+        this.position = [];
+    }
+}
+
+// Score 
+const score = {
+    best : parseInt(localStorage.getItem('best')) || 0,
+    value : 0,
+
+    draw : function (){
+        ctx.fillStyle = "#fff";
+        ctx.strokeStyle = "#000";
+
+        if(state.current == state.game){
+            ctx.lineWidth = 2;
+            ctx.font = '60px play';
+            ctx.fillText(this.value, cvs.width/2, 80);
+            ctx.strokeText(this.value, cvs.width/2, 80);
+        }else if(state.current == state.over){
+            // Score value
+            ctx.font = '35px play';
+            ctx.fillText(this.value, 453, 190);
+            ctx.strokeText(this.value, 453, 190);
+            // Best score
+            ctx.fillText(this.best, 453, 230);
+            ctx.strokeText(this.best, 453, 230);
+        }
+    },
+    reset : function() {
+        this.value = 0;
+    }
+}
+
+
 // Draw elements to canvas 
 function draw(){
     ctx.fillStyle = "#3B6CB5";                  // Background color 
     ctx.fillRect(0, 0, cvs.width, cvs.height);  // covering the canvas
     
     bg.draw();
+    pipes.draw();
     fg.draw();
     bird.draw();
     getReady.draw();
     gameOver.draw();
+    score.draw();
+    
 }
 
 // UPDATE
 function update(){
     bird.update();
     fg.update();
+    pipes.update();
     
 }
 
