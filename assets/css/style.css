@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&family=Press+Start+2P&display=swap');
+
+/*-------------------------------------Special paddings/margins/text */ 
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body { 
+    margin: 0;
+}
+
+/*------------------------------------- responsiveness of game */ 
+
+#wrapper {
+   display: table;
+   padding: 0;
+   width: 100%;
+   height: 100%;
+   position: absolute;
+}
+
+#container {
+    position: relative;
+    max-width: 100vh;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+/*------------------------------------- The canvas*/ 
+
+canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 0 auto;
+            height: 100%;
+            width: 100%;
+        }
