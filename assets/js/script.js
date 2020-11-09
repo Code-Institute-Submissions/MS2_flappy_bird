@@ -124,12 +124,12 @@ const fg = {
 // Bird 
 const bird = {
     animation : [
-        {sX: 276, sY : 112},
+        {sX: 276, sY : 114},
         {sX: 276, sY : 139},
         {sX: 276, sY : 164},
         {sX: 276, sY : 139}
     ],
-    x : 200,
+    x : 180,
     y : 200,
     w : 34,
     h : 26,

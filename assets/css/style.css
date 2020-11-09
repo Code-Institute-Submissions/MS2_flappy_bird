@@ -15,7 +15,7 @@ body {
 
 h2 {
     font-family: "press Start 2P", sans-serif;
-    color: #FFA3A3;
+    color: yellow;
     font-size: 45px;
     font-weight: bolder;
     text-align: center;
@@ -28,11 +28,10 @@ h2 {
 /*------------------------------------- Welcome screen & game over screen*/ 
 
 .game-info {
-    background-color: #636363;
-    opacity: 1;
+    background-color: #717171;
+    opacity: 0.95;
     position: fixed;
     margin: 0 auto;
-    padding: 0;
     height: 100%;
     width: 100%;
     z-index: 100;
@@ -71,7 +70,7 @@ h2 {
     font-size: 25px;
     font-weight: 700;
     color: #000;
-    background-color: #FFA3A3;
+    background-color: yellow;
     border-color: #000;
     border-radius: 5px;
     margin: 15px;
