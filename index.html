@@ -7,11 +7,27 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+    <!-- Welcome screen-->
+    <section id="startscreen" class="game-info">
+        <h2>Flappy</h2>
+        <h2>Bird</h2>
+        <div id="avatar"></div>
+        <p class="instruction">Press the space key or tap to avoid the pipes.</p>
+        <div class="buttons">
+            <button type="button" name="button" id="play-button">Play</button>
+            <button type="button" class="sound-button"><i class="fas fa-volume-up"></i></button>
+        </div>
+    </section>
+    <!--../Welcome screen-->  
+
+    <!--The game in canvas-->        
     <div id="wrapper">
         <div id="container">
             <canvas id="bird" width="786" height="685"></canvas>
         </div>
     </div>
+    <!--../The game in canvas-->   
 
     <script src="assets/js/script.js"></script>
 </body>

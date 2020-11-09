@@ -2,6 +2,8 @@
 
 /*-------------------------------------Special paddings/margins/text */ 
 
+* { box-sizing: border-box; margin: 0; padding:0; }
+
 html {
     height: 100%;
     width: 100%;
@@ -10,6 +12,97 @@ html {
 body { 
     margin: 0;
 }
+
+h2 {
+    font-family: "press Start 2P", sans-serif;
+    color: #FFA3A3;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px black;
+    margin: auto;
+    margin-top: 25px;
+}
+
+/*------------------------------------- Welcome screen & game over screen*/ 
+
+.game-info {
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+    background-color:rgba(132, 132, 132, 0.9);
+}
+
+#avatar {
+    background: url(../images/bird.png);
+    background-color: green;
+    width: 60px;
+    height: 45px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    
+}
+
+.instruction {
+    font-family: "play", sans-serif;
+    color: #000;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px;
+}
+
+.buttons {
+    text-align: center;
+    padding: 10px;
+}
+
+#play-button, .sound-button {
+    font-size: 25px;
+    font-weight: 700;
+    color: #000;
+    background-color: #FFA3A3;
+    border-color: #000;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#sound-button {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.scoreboard {
+    background-color: #FFA3A3;
+    border: 3px solid #000;
+    border-radius: 10px;
+    width: 70%;
+    padding: 10px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.score {
+    font-family: "play", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center; 
+    padding: 5px;
+    margin: 15px; 
+}
+
 
 /*------------------------------------- responsiveness of game */ 
 

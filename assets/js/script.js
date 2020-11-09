@@ -2,13 +2,17 @@
 const cvs = document.getElementById("bird");
 const ctx = cvs.getContext("2d");
 
+// DOM Elements 
+const startScreen = document.getElementById('startscreen');
+const startBtn = document.getElementById('play-button')
+
 // Variables
 let frames = 0;
 const DEGREE = Math.PI/180;
 
 // Load template image
 const sprite = new Image();
-sprite.src = "img/sprite.png";
+sprite.src = "assets/images/sprite.png";
 
 // Game state 
 const state = {
@@ -18,13 +22,24 @@ const state = {
     over : 2
 }
 
-// Start button 
-const startBtn = {
+// restart button 
+const restartBtn = {
     x : 120,
     y : 163,
     w : 83,
     h : 29
 }
+
+// Start of game || startscreen 
+document.getElementById('play-button').onclick = function() {
+    removeStartscreen()
+}
+
+function removeStartscreen() {
+    startScreen.remove();
+}
+
+
 
 // Control the game 
 cvs.addEventListener('click', function(evt) {
@@ -33,21 +48,21 @@ cvs.addEventListener('click', function(evt) {
             state.current = state.game;
             break;
         case state.game:
-                bird.flap();
-                break;
+            bird.flap();
+            break;
         case state.over:
             let rect = cvs.getBoundingClientRect();
             let clickX = evt.clientX - rect.left;
             let clickY = evt.clientY - rect.top;
 
-            // Check if we click on the start button 
-            if(clickX >= startBtn.x && clickX <= startBtn.x + startBtn.w && clickY > startBtn.y && clickY <= startBtn.y + startBtn.h){
-                pipes.reset();
-                bird.speedReset();
-                score.reset();
-                state.current = state.getReady;
-            }
-            break;
+        // Check if we click on the start button 
+        if(clickX >= restartBtn.x && clickX <= restartBtn.x + restartBtn.w && clickY > restartBtn.y && clickY <= restartBtn.y + restartBtn.h){
+            pipes.reset();
+            bird.speedReset();
+            score.reset();
+            state.current = state.getReady;
+        }
+        break;
     }
 
 });
