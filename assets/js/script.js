@@ -11,6 +11,19 @@ endScreen.remove();
 let frames = 0;
 const DEGREE = Math.PI/180;
 
+// Load sounds 
+const SCORE_S = new Audio();
+SCORE_S.src = 'assets/audio/sfx_point.wav';
+
+const FLAP = new Audio();
+FLAP.src = 'assets/audio/sfx_flap.wav';
+
+const HIT = new Audio();
+HIT.src = 'assets/audio/sfx_hit.wav';
+
+const DIE = new Audio();
+DIE.src = 'assets/audio/sfx_die.wav';
+
 // Load template image
 const sprite = new Image();
 sprite.src = "assets/images/sprite.png";
@@ -48,6 +61,7 @@ cvs.addEventListener('click', function(evt) {
             break;
         case state.game:
             bird.flap();
+            FLAP.play();
             break;
         case state.over:
             let rect = cvs.getBoundingClientRect();
@@ -164,6 +178,7 @@ const bird = {
                 this.y = cvs.height - fg.h - this.h/2;
                 if (state.current == state.game){
                     state.current = state.over;
+                    DIE.play();
                 }
             }
 
@@ -210,16 +225,18 @@ const gameOver = { // change to own design
         if(state.current == state.over) {
             ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         } 
+    },
+
+    update : function(){
+        if(state.current == state.over) {
+            console.log('game over')
+            return endScreen;
+        }
+
     }
 }
 
-// Game over 
-function isGameOver() {
-    if(state.current == state.over) {
-        console.log('game over')
-        document.getElementById('startscreen')
-    }
-}
+
 
 // pipes 
 const pipes = {
@@ -275,10 +292,12 @@ const pipes = {
             // Top pipe
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h){
                 state.current = state.over;
+                HIT.play();
             }
             // Bottom pipe
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h){
                 state.current = state.over;
+                HIT.play();
             }
 
             // Move the pipe to the left | snelheid, heeft te maken met de dx
@@ -288,6 +307,7 @@ const pipes = {
             if(p.x + this.w <= 0){
                 this.position.shift();
                 score.value += 1;
+                SCORE_S.play();
 
                 score.best = Math.max(score.value, score.best);
                 localStorage.setItem('best', score.best);
@@ -349,6 +369,7 @@ function update(){
     bird.update();
     fg.update();
     pipes.update();
+    gameOver.update();
     
 }
 
