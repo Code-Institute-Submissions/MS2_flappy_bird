@@ -6,6 +6,7 @@ const ctx = cvs.getContext("2d");
 const startScreen = document.getElementById('startscreen');
 const gameOverScreen = document.getElementById('endscreen')
 const scoreboard = document.getElementById('scoreboard');
+const bestScore = document.getElementById('bestscoreboard')
 
 
 // Variables
@@ -223,10 +224,12 @@ const getReady = {
 // Game over screen 
 const gameOver = { 
     update : function(){
-        if(state.current == state.over) {
-            console.log('game over')
-            showGameOverScreen(endscreen)
-        }
+       if(state.current == state.over) {
+           console.log('game over');
+           setTimeout(function(){               // Game over screen appeers after 1s
+               showGameOverScreen(endscreen)
+           }, 1000); 
+       }  
     },
     reset : function() {
         state.current = state.getReady
@@ -334,17 +337,22 @@ const score = {
             ctx.strokeText(this.value, cvs.width/2, 80);
         }else if(state.current == state.over){      // Score if game over
             // Score value
-            ctx.font = '35px play';
-            ctx.fillText(this.value, 453, 190);
-            ctx.strokeText(this.value, 453, 190);
-            // Best score
-            ctx.fillText(this.best, 453, 230);
-            ctx.strokeText(this.best, 453, 230);
+            drawScoreboard();
+            drawBestScoreboard() 
         }
     },
     reset : function() {
         this.value = 0;
     }
+}
+
+// Draw scores on scoreboard
+function drawScoreboard() {
+    scoreboard.innerHTML = score.value;
+}
+
+function drawBestScoreboard() {
+    bestScore.innerHTML = score.best;
 }
 
 

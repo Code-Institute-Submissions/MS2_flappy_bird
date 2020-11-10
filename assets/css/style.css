@@ -77,7 +77,7 @@ h2 {
     font-weight: 700;
     color: #fff;
     background-color: #e0960a;
-    border-color: #fff;
+    border: 2px solid #fff;
     border-radius: 5px;
     margin: 15px;
     padding: 5px;
@@ -95,7 +95,7 @@ h2 {
     font-weight: 700;
     color: #fff;
     background-color: #e0960a;
-    border-color: #fff;
+    border: 2px solid #fff;
     border-radius: 5px;
     margin: 15px;
     padding: 5px;
@@ -115,7 +115,7 @@ h2 {
     background-color: #e0960a;
     border: 3px solid #fff;
     border-radius: 10px;
-    width: 60%;
+    width: 50%;
     padding: 5px;
     margin: auto;
     margin-top: 40px;
@@ -135,20 +135,18 @@ h2 {
 #scoreboard {
     font-family: "play", sans-serif;
     color: #fff;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
     text-align: center; 
-    padding: 5px;
     margin: 15px; 
 }
 
 #bestscoreboard {
     font-family: "play", sans-serif;
     color: #fff;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
     text-align: center; 
-    padding: 5px;
     margin: 15px; 
 }
 /*------------------------------------- responsiveness of game */ 
