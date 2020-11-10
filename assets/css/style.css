@@ -15,12 +15,12 @@ body {
 
 h2 {
     font-family: "press Start 2P", sans-serif;
-    color: yellow;
+    color: #ffab0d;
     font-size: 45px;
     font-weight: bolder;
     text-align: center;
     text-transform: uppercase;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 1px #fff;;
     margin: auto;
     margin-top: 25px;
 }
@@ -28,8 +28,8 @@ h2 {
 /*------------------------------------- Welcome screen & game over screen*/ 
 
 .game-info {
-    background-color: #717171;
-    opacity: 0.95;
+    background-color: #383737;
+    opacity: 0.97;
     position: fixed;
     margin: 0 auto;
     height: 100%;
@@ -39,6 +39,12 @@ h2 {
 
 #game-name {
     padding: 20px;
+    margin-top: 50px;
+}
+
+#gameover {
+    padding: 20px;
+    margin-top: 50px;
 }
 
 #avatar {
@@ -54,11 +60,11 @@ h2 {
 
 #instruction {
     font-family: "play", sans-serif;
-    color: #000;
+    color: #fff;
     font-size: 30px;
     font-weight: 700;
     text-align: center;
-    padding: 20px;
+    padding: 50px;
 }
 
 .buttons {
@@ -66,12 +72,12 @@ h2 {
     padding: 20px;
 }
 
-#play-button, .sound-button {
+#play-button, #sound-button {
     font-size: 25px;
     font-weight: 700;
-    color: #000;
-    background-color: yellow;
-    border-color: #000;
+    color: #fff;
+    background-color: #e0960a;
+    border-color: #fff;
     border-radius: 5px;
     margin: 15px;
     padding: 5px;
@@ -84,12 +90,33 @@ h2 {
     padding-right: 25px;
 }
 
-.scoreboard {
-    background-color: #FFA3A3;
-    border: 3px solid #000;
+#play-button-go, #sound-button-go {
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #e0960a;
+    border-color: #fff;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#sound-button-go {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+
+
+.scores {
+    background-color: #e0960a;
+    border: 3px solid #fff;
     border-radius: 10px;
-    width: 70%;
-    padding: 10px;
+    width: 60%;
+    padding: 5px;
     margin: auto;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -97,6 +124,7 @@ h2 {
 
 .score {
     font-family: "play", sans-serif;
+    color: #fff;
     font-size: 30px;
     font-weight: 700;
     text-align: center; 
@@ -104,7 +132,25 @@ h2 {
     margin: 15px; 
 }
 
+#scoreboard {
+    font-family: "play", sans-serif;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center; 
+    padding: 5px;
+    margin: 15px; 
+}
 
+#bestscoreboard {
+    font-family: "play", sans-serif;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center; 
+    padding: 5px;
+    margin: 15px; 
+}
 /*------------------------------------- responsiveness of game */ 
 
 .wrapper {
@@ -122,6 +168,11 @@ h2 {
     margin: 0 auto;
 }
 
+#endscreen {
+    visibility: hidden;
+
+}
+
 /*------------------------------------- The canvas*/ 
 
 canvas {
@@ -131,3 +182,14 @@ canvas {
     height: 100%;
     width: 100%;
 }
+
+  /*------------------------------------- MEDIA QUERIES | for ipad pro  */ 
+
+  @media screen and (min-width: 1024px) and (max-width: 1366px) and (min-height: 1024px) {
+      #game-name {
+          margin-top: 30%;
+      }
+      #gameover {
+          margin-top: 30%;
+      }
+  }
