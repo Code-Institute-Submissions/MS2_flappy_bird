@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/e77f75aba8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Original Flappy Bird -JavaScript</title>
-    
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://kit.fontawesome.com/e77f75aba8.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Flappy Bird by Juan Stelling</title>
+    </head>
 
-    <!-- Welcome screen-->
-    <section id="startscreen" class="game-info">
-        <div id="game-name">
-            <h2>Flappy</h2>
-            <h2>Bird</h2>
-        </div>
-        <div id="avatar"></div>
-        <p id="instruction">Press the space key or tap on the screen to avoid the pipes.</p>
-        <div class="buttons">
-            <button type="button" name="button" id="play-button">Play</button>
-            <button type="button" id="sound-button"><i class="fas fa-volume-up"></i></button>
-        </div>
-    </section>
-    <!--../Welcome screen--> 
+    <body>
+        <!-- Welcome screen-->
+        <section id="startscreen" class="game-info">
+            <div id="game-name">
+                <h2>Flappy</h2>
+                <h2>Bird</h2>
+            </div>
+            <div id="avatar"></div>
+            <p id="instruction">Press the space key or tap on the screen to avoid the pipes.</p>
+            <div class="buttons">
+                <button type="button" name="button" id="play-button">Play</button>
+                <button type="button" id="sound-button"><i class="fas fa-volume-up"></i></button>
+            </div>
+        </section>
+        <!--../Welcome screen--> 
 
-    <!--Game over screen-->
-    <section id="endscreen" class="game-info">
-        <div id="gameover">
-            <h2>Game Over</h2>
-        </div>
-            <div class="scores">  
+        <!--Game over screen-->
+        <section id="endscreen" class="game-info">
+            <div id="gameover">
+                <h2>Game Over</h2>
+            </div>
+            <div id="scores">  
                 <p class="score">Score:</p>
                 <p id="scoreboard"></p>
                 <p class="score">Best score:</p>
@@ -44,14 +43,14 @@
         </section> 
         <!--../Game over screen--> 
 
-    <!--The game in canvas-->        
-    <div class="wrapper">
-        <div class="container">
-            <canvas id="bird" width="786" height="685"></canvas>
+        <!--The game in canvas-->        
+        <div class="wrapper">
+            <div class="container">
+                <canvas id="bird" width="786" height="685"></canvas>
+            </div>
         </div>
-    </div>
-    <!--../The game in canvas-->   
+        <!--../The game in canvas-->   
 
-    <script src="assets/js/script.js"></script>
-</body>
+        <script src="assets/js/script.js"></script>
+    </body>
 </html>

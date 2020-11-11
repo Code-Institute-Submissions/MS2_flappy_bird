@@ -4,14 +4,18 @@ const ctx = cvs.getContext("2d");
 
 // DOM Elements 
 const startScreen = document.getElementById('startscreen');
-const gameOverScreen = document.getElementById('endscreen')
 const scoreboard = document.getElementById('scoreboard');
-const bestScore = document.getElementById('bestscoreboard')
+const bestScore = document.getElementById('bestscoreboard');
+const soundbtn = document.getElementById('sound-button');
+const soundbtngo = document.getElementById('sound-button-go');
 
+   
 
 // Variables
 let frames = 0;
 const DEGREE = Math.PI/180;
+var count = 0;
+var sound = true;
 
 // Load sounds 
 const SCORE_S = new Audio();
@@ -39,23 +43,50 @@ const state = {
     getReady : 0,
     game : 1,
     over : 2
-}
-
-// restart button 
-const restartBtn = {
-    x : 120,
-    y : 163,
-    w : 83,
-    h : 29
-}
+};
 
 // Start of game || startscreen 
 document.getElementById('play-button').onclick = function() {
-    removeStartscreen()
-}
+    removeStartscreen();
+};
 
 function removeStartscreen() {
     startScreen.remove();
+}
+
+// Sound on and off 
+document.getElementById('sound-button').onclick = function() {
+    PlayStopSound();
+}
+document.getElementById('sound-button-go').onclick = function() {
+    PlayStopSound()
+}
+
+function PlayStopSound() {
+    if(sound == true){
+        sound = false;
+        this.play = function() {
+            this.FLAP.currentTime() = 0;
+        }
+        console.log('stop sound')
+    }else{
+        sound = true
+        this.play = function() {
+            this.FLAP.play();
+        }
+            
+        console.log('play sound')
+    }
+};
+
+// experiment 
+function sound() {
+    if(sound == true){
+
+    }
+    this.play = function() {
+        SCORE_S.play()
+    }
 }
 
 // Control the game by clicking 
@@ -69,18 +100,16 @@ cvs.addEventListener('click', function(evt) {
             FLAP.play();
             break;
         case state.over:
-
-        
     }
 });
 
 // Function play button by game over screen 
 document.getElementById('play-button-go').onclick = function() {
-    playagain()
-}
+    playagain();
+};
 
 function playagain() {
-    console.log('play again')
+    console.log('play again');
     endscreen.remove();
     bird.speedReset();
     pipes.reset();
@@ -103,7 +132,7 @@ const bg = {
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w + this.w, this.y, this.w, this.h);
     }
-}
+};
 
 // Foreground 
 const fg = {
@@ -128,7 +157,7 @@ const fg = {
             this.x = (this.x - this.dx)%(this.w/2);     // Moving FG to the left 
         }
     }
-}
+};
 
 // Bird 
 const bird = {
@@ -153,7 +182,7 @@ const bird = {
     rotation : 0,      
 
     draw : function() {
-        let bird = this.animation[this.frame]
+        let bird = this.animation[this.frame];
 
         ctx.save();
         ctx.translate(this.x, this.y);
@@ -202,7 +231,7 @@ const bird = {
         this.speed = 0;
         this.rotation = 0;
     }
-}
+};
 
 // Get ready message
 const getReady = { 
@@ -216,10 +245,9 @@ const getReady = {
     draw : function() {
         if(state.current == state.getReady) {
             ctx.drawImage(tap, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
-        };
+        }
     }
 };
-
 
 // Game over screen 
 const gameOver = { 
@@ -227,18 +255,18 @@ const gameOver = {
        if(state.current == state.over) {
            console.log('game over');
            setTimeout(function(){               // Game over screen appeers after 1s
-               showGameOverScreen(endscreen)
+               showGameOverScreen(endscreen);
            }, 1000); 
        }  
     },
     reset : function() {
-        state.current = state.getReady
+        state.current = state.getReady;
     }
-}
+};
 
 // function for game over screen
 function showGameOverScreen(endscreen){
-    endscreen.style.visibility="visible"
+    endscreen.style.visibility="visible";
 }
 
 // Pipes 
@@ -319,7 +347,7 @@ const pipes = {
     reset : function() {
         this.position = [];
     }
-}
+};
 
 // Score 
 const score = {
@@ -338,13 +366,13 @@ const score = {
         }else if(state.current == state.over){      // Score if game over
             // Score value
             drawScoreboard();
-            drawBestScoreboard() 
+            drawBestScoreboard();
         }
     },
     reset : function() {
         this.value = 0;
     }
-}
+};
 
 // Draw scores on scoreboard
 function drawScoreboard() {
