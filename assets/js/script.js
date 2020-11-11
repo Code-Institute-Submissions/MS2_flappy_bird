@@ -6,10 +6,6 @@ const ctx = cvs.getContext("2d");
 const startScreen = document.getElementById('startscreen');
 const scoreboard = document.getElementById('scoreboard');
 const bestScore = document.getElementById('bestscoreboard');
-const soundbtn = document.getElementById('sound-button');
-const soundbtngo = document.getElementById('sound-button-go');
-
-   
 
 // Variables
 let frames = 0;
@@ -79,16 +75,6 @@ function PlayStopSound() {
     }
 };
 
-// experiment 
-function sound() {
-    if(sound == true){
-
-    }
-    this.play = function() {
-        SCORE_S.play()
-    }
-}
-
 // Control the game by clicking 
 cvs.addEventListener('click', function(evt) {
     switch(state.current) {
@@ -100,6 +86,7 @@ cvs.addEventListener('click', function(evt) {
             FLAP.play();
             break;
         case state.over:
+            state.current = state.getReady;
     }
 });
 
