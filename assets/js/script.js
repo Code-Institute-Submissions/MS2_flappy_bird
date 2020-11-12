@@ -10,21 +10,20 @@ const bestScore = document.getElementById('bestscoreboard');
 // Variables
 let frames = 0;
 const DEGREE = Math.PI/180;
-var count = 0;
 var sound = true;
 
 // Load sounds 
-const SCORE_S = new Audio();
-SCORE_S.src = 'assets/audio/sfx_point.wav';
+const scoreSound = new Audio();
+scoreSound.src = 'assets/audio/sfx_point.wav';
 
-const FLAP = new Audio();
-FLAP.src = 'assets/audio/sfx_flap.wav';
+const wings = new Audio();
+wings.src = 'assets/audio/sfx_flap.wav';
 
-const HIT = new Audio();
-HIT.src = 'assets/audio/sfx_hit.wav';
+const hitPipe = new Audio();
+hitPipe.src = 'assets/audio/sfx_hit.wav';
 
-const DIE = new Audio();
-DIE.src = 'assets/audio/sfx_die.wav';
+const dead = new Audio();
+dead.src = 'assets/audio/sfx_die.wav';
 
 // Load images
 const sprite = new Image();
@@ -53,27 +52,22 @@ function removeStartscreen() {
 // Sound on and off 
 document.getElementById('sound-button').onclick = function() {
     PlayStopSound();
-}
+};
 document.getElementById('sound-button-go').onclick = function() {
-    PlayStopSound()
-}
+    PlayStopSound();
+};
 
 function PlayStopSound() {
     if(sound == true){
         sound = false;
-        this.play = function() {
-            this.FLAP.currentTime() = 0;
-        }
-        console.log('stop sound')
+        this.wings.currentTime() = 0;
+        console.log('stop sound');
     }else{
-        sound = true
-        this.play = function() {
-            this.FLAP.play();
-        }
-            
-        console.log('play sound')
+        sound = true;
+        this.wings.play(); 
+        console.log('play sound');
     }
-};
+}
 
 // Control the game by clicking 
 cvs.addEventListener('click', function(evt) {
@@ -83,7 +77,7 @@ cvs.addEventListener('click', function(evt) {
             break;
         case state.game:
             bird.flap();
-            FLAP.play();
+            wings.play();
             break;
         case state.over:
             state.current = state.getReady;
@@ -201,7 +195,7 @@ const bird = {
                 this.y = cvs.height - fg.h - this.h/2;
                 if (state.current == state.game){
                     state.current = state.over;
-                    DIE.play();
+                    dead.play();
                 }
             }
 
@@ -309,12 +303,12 @@ const pipes = {
             // Top pipe
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h){
                 state.current = state.over;
-                HIT.play();
+                hitPipe.play();
             }
             // Bottom pipe
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h){
                 state.current = state.over;
-                HIT.play();
+                hitPipe.play();
             }
 
             // Move the pipe to the left 
@@ -324,7 +318,7 @@ const pipes = {
             if(p.x + this.w <= 0){
                 this.position.shift();
                 score.value += 1;       // If the pipes goed beyond the pipe, the score is +1
-                SCORE_S.play();
+                scoreSound.play();
 
                 score.best = Math.max(score.value, score.best);
                 localStorage.setItem('best', score.best);
