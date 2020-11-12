@@ -91,11 +91,10 @@ document.getElementById('play-button-go').onclick = function() {
 
 function playagain() {
     console.log('play again');
-    endscreen.remove();
+    endscreen.style.visibility="hidden" 
     bird.speedReset();
     pipes.reset();
     score.reset();
-    gameOver.reset();
     state.current = state.getReady;
 }
 
@@ -235,20 +234,17 @@ const gameOver = {
     update : function(){
        if(state.current == state.over) {
            console.log('game over');
-           setTimeout(function(){               // Game over screen appeers after 1s
-               showGameOverScreen(endscreen);
-           }, 1000); 
+           showGameOverScreen(endscreen)
        }  
     },
-    reset : function() {
-        state.current = state.getReady;
-    }
 };
 
 // function for game over screen
 function showGameOverScreen(endscreen){
-    endscreen.style.visibility="visible";
+    endscreen.style.visibility="visible"
 }
+
+
 
 // Pipes 
 const pipes = {
