@@ -1,4 +1,4 @@
-<h1 align="center">Flappy Bird by Juan Stelling</h1>
+<h1 align="center">Flappy Bird</h1>
 
 ![Portfolio website](readme-testing/flappybird-responsive.png)
 
@@ -214,7 +214,6 @@ To clone this project from GitHub:
 <h1>6. Credits</h1>
 
 #### Content 
-- All content on the website is written by the developer, Juan Stelling. 
 - All text within the game is original content.
 - The developer took inspiration of several tutorials. 
 
