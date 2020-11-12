@@ -113,9 +113,9 @@ Click on the links below to see the mockups in Figma.
 - the canvas is responsive on all devices while preserving its aspect ratio and resolution. 
 
 #### 3. Controlling the game 
-- The game can be controlled with the mouse (by clicking on the right mouse button). When the player presses the mouse the bird is flying. 
+- The game can be controlled with the mouse (by clicking on the left mouse button). When the player presses the mouse the bird is flying. 
 - the game can be controlled with a touchscreen (by tapping on the screen). When the player touches the screen the bird is flying. 
-- The game starts when the player is in the get ready state and presses the right mouse button or taps on the screen. 
+- The game starts when the player is in the get ready state and presses the left mouse button or taps on the screen. 
 - All buttons are clickable.
 
 #### 4. The Game
@@ -129,7 +129,7 @@ Click on the links below to see the mockups in Figma.
 
 #### 4. Sound
 - During the game, there are four sounds that interact with the game: 
-    - One sound is made when the player clicks on the right mouse button or taps on the screen (sound of the wings). 
+    - One sound is made when the player clicks on the left mouse button or taps on the screen (sound of the wings). 
     - One sound is made when the pipe is out of the canvas (the player gets a score of +1) (sound of score).
     - One sound is made when the bird hits the pipes (Sound of hit the pipe).
     - One sound is made when the bird hits the ground (sound of dead).
