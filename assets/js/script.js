@@ -6,23 +6,16 @@ const ctx = cvs.getContext("2d");
 const scoreboard = document.getElementById('scoreboard');
 const bestScore = document.getElementById('bestscoreboard');
 
-// Variables
+// Variables of game
 let frames = 0;
 const DEGREE = Math.PI/180;
 var sound = true;
 
-// Load sounds 
-const scoreSound = new Audio();
-scoreSound.src = 'assets/audio/sfx_point.wav';
-
-const wings = new Audio();
-wings.src = 'assets/audio/sfx_flap.wav';
-
-const hitPipe = new Audio();
-hitPipe.src = 'assets/audio/sfx_hit.wav';
-
-const dead = new Audio();
-dead.src = 'assets/audio/sfx_die.wav';
+// Load sounds effects
+const scoreSound = new Audio("assets/audio/sfx_point.wav");
+const wings = new Audio("assets/audio/sfx_flap.wav");
+const hitPipe = new Audio("assets/audio/sfx_hit.wav");
+const dead = new Audio("assets/audio/sfx_die.wav");
 
 // Load images
 const sprite = new Image();
@@ -31,45 +24,13 @@ sprite.src = "assets/images/sprite.png";
 const tap = new Image();
 tap.src = "assets/images/tap.png";
 
-// Game state 
+// Game states
 const state = {
     current : 0,
     getReady : 0,
     game : 1,
     over : 2
 };
-
-// Startscreen | If play button is presses, startscreen is hidden.
-document.getElementById('play-button').onclick = function() {
-    startscreen.style.visibility="hidden";
-};
-
-// Endscreen | If home button is presses, back to startscreen and reset game
-document.getElementById('home-button-go').onclick = function() {
-    startscreen.style.visibility="visible";
-    playagain();
-};
-
-// Sound on and off 
-document.getElementById('sound-button').onclick = function() {
-    PlayStopSound();
-};
-document.getElementById('sound-button-go').onclick = function() {
-    PlayStopSound();
-};
-
-// Still in progress
-function PlayStopSound() {
-    if(sound == true){
-        sound = false;
-        this.wings.currentTime() = 0;
-        console.log('stop sound');
-    }else{
-        sound = true;
-        this.wings.play(); 
-        console.log('play sound');
-    }
-}
 
 // Control the game by clicking 
 cvs.addEventListener('click', function(evt) {
@@ -86,11 +47,23 @@ cvs.addEventListener('click', function(evt) {
     }
 });
 
-// Function play button by game over screen 
+// Startscreen | If play button is presses, startscreen is hidden.
+document.getElementById('play-button').onclick = function() {
+    startscreen.style.visibility="hidden";
+};
+
+// Endscreen | If home button is presses, back to startscreen and reset game
+document.getElementById('home-button-go').onclick = function() {
+    startscreen.style.visibility="visible";
+    playagain();
+};
+
+// Endscreen | when play button is clicked, the game is reset.
 document.getElementById('play-button-go').onclick = function() {
     playagain();
 };
 
+// Function that restarts the game 
 function playagain() {
     console.log('play again');
     endscreen.style.visibility="hidden" 
@@ -100,7 +73,39 @@ function playagain() {
     state.current = state.getReady;
 }
 
-// Background buildings 
+// Turn sound on and off 
+document.getElementById('sound-button').onclick = function() {
+    PlayStopSound();
+};
+document.getElementById('sound-button-go').onclick = function() {
+    PlayStopSound();
+};
+
+function PlayStopSound() {
+    if(sound == true){ 
+        sound = false;              // Sound button pressed, volume is off/0
+        scoreSound.volume = 0;
+        wings.volume = 0;
+        hitPipe.volume = 0;
+        dead.volume = 0;
+        document.getElementById('sound-button').innerHTML="&#xf6a9";
+        document.getElementById('sound-button-go').innerHTML="&#xf6a9";
+        console.log('stop sound');
+    }else{
+        sound = true;               // Sound button pressed, volume is on
+        scoreSound.volume = 1;
+        wings.volume = 1;
+        hitPipe.volume = 1;
+        dead.volume = 1;
+        document.getElementById('sound-button').innerHTML='&#xf028';
+        document.getElementById('sound-button-go').innerHTML='&#xf028';
+        console.log('play sound');
+    }  
+}
+document.getElementById('sound-button').innerHTML='&#xf028';
+document.getElementById('sound-button-go').innerHTML='&#xf028';
+
+// position of the background in canvas
 const bg = {
     sX : 0,
     sY : 0,
@@ -109,14 +114,14 @@ const bg = {
     x : 0,
     y : cvs.height - 226,
     
-    draw : function(){     // position of the image
+    draw : function(){     // with bg.draw in draw function, the image is draw
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w + this.w, this.y, this.w, this.h);
     }
 };
 
-// Foreground 
+// position of the forground in canvas
 const fg = {
     sX: 276,
     sY: 0,
@@ -127,21 +132,22 @@ const fg = {
 
     dx : 2,
     
-    draw : function(){
+    draw : function(){ // with fg.draw in draw function, the image is draw
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w + this.w, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w + this.w + this.w, this.y, this.w, this.h);
     }, 
     
-    update : function() {   
+    // the forground is moving to the left
+    update : function() {    
         if(state.current == state.game) {
-            this.x = (this.x - this.dx)%(this.w/2);     // Moving FG to the left 
+            this.x = (this.x - this.dx)%(this.w/2);     
         }
     }
 };
 
-// Bird 
+// position of the bird in canvas
 const bird = {
     animation : [
         {sX: 277, sY : 114},
@@ -158,12 +164,12 @@ const bird = {
 
     frame : 0, // Startframe of the bird
 
-    gravity : 0.25,     // The gravity of the bird, how fast the bird goes down
+    gravity : 0.25,     // How fast the bird goes down
     jump : 5,           // How high the bird jumps
     speed: 0,           // speed by start begins at 0 with the bird
     rotation : 0,      
 
-    draw : function() {
+    draw : function() { // with bird.draw in draw function, the image is draw
         let bird = this.animation[this.frame];
 
         ctx.save();
@@ -173,8 +179,9 @@ const bird = {
         ctx.restore();
     },
 
+    // The jumping of the bird with bird.jump()
     flap : function() {
-        this.speed = - this.jump;  // the bird jumps
+        this.speed = - this.jump;  
     },
 
     update : function() { 
@@ -185,14 +192,14 @@ const bird = {
         // Frame goes from 0 to 4, then again to 0
         this.frame = this.frame%this.animation.length;
 
-        if(state.current == state.getReady){    // The bird falls 
+        if(state.current == state.getReady){    
              this.y = 300;                      // Reset position of the bird after game over
         }else {                                 // When the bird falls to the ground the bird goes faster and with his face down
             this.speed += this.gravity; 
             this.y += this.speed;
             this.rotation = 0 * DEGREE;
 
-            if(this.y + this.h/2 >= cvs.height - fg.h) { // if the birds hit the ground
+            if(this.y + this.h/2 >= cvs.height - fg.h) { // if the birds hit the ground, the bird rotates 90 degrees
                 this.y = cvs.height - fg.h - this.h/2;
                 if (state.current == state.game){
                     state.current = state.over;
@@ -236,7 +243,7 @@ const gameOver = {
     update : function(){
        if(state.current == state.over) {
            console.log('game over');
-                showGameOverScreen(endscreen)  
+           showGameOverScreen(endscreen)  
        }  
     },
 };
