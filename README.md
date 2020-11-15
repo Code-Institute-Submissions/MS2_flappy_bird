@@ -73,7 +73,7 @@ The backgroundcolour for the game
 
 This colour is chosen for the background of the game. The dark blue represents the sky where the bird flies into. 
 
-- #### Typography 
+- #### Fonts
 The **press to start 2p** font and  **play** font are used throughout the whole game. Sans Serif is the fallback in case the main font isn’t being imported to the site correctly. The press to start 2p fonts is used for the titel of the game, the get ready text and the game over text. This font is used because the font gives an old school game vibe. The play font is used for the instructions, the text on the buttons and the scores in the game. The play font is easy to read and matches good with the press start 2p.
 
 
