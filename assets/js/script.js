@@ -2,7 +2,7 @@
 const cvs = document.getElementById("bird");
 const ctx = cvs.getContext("2d");
 
-// DOM Elements 
+// DOM Elements | Getting elements by id for variable.
 const scoreboard = document.getElementById('scoreboard');
 const bestScore = document.getElementById('bestscoreboard');
 
@@ -10,6 +10,8 @@ const bestScore = document.getElementById('bestscoreboard');
 let frames = 0;
 const DEGREE = Math.PI/180;
 var sound = true;
+const endscreen;
+const startscreen;
 
 // Load sounds effects
 const scoreSound = new Audio("assets/audio/sfx_point.wav");
@@ -32,7 +34,7 @@ const state = {
     over : 2
 };
 
-// Control the game by clicking 
+// What happends in each state of the game. 
 cvs.addEventListener('click', function(evt) {
     switch(state.current) {
         case state.getReady:
@@ -52,7 +54,7 @@ document.getElementById('play-button').onclick = function() {
     startscreen.style.visibility="hidden";
 };
 
-// Endscreen | If home button is presses, back to startscreen and reset game
+// Endscreen | If home button is presses, back to startscreen and reset game.
 document.getElementById('home-button-go').onclick = function() {
     startscreen.style.visibility="visible";
     playagain();
@@ -63,17 +65,17 @@ document.getElementById('play-button-go').onclick = function() {
     playagain();
 };
 
-// Function that restarts the game 
+// Restarts the game. 
 function playagain() {
     console.log('play again');
-    endscreen.style.visibility="hidden" 
+    endscreen.style.visibility="hidden";
     bird.speedReset();
     pipes.reset();
     score.reset();
     state.current = state.getReady;
 }
 
-// Turn sound on and off 
+// Turn the sound off or on.
 document.getElementById('sound-button').onclick = function() {
     PlayStopSound();
 };
@@ -81,9 +83,10 @@ document.getElementById('sound-button-go').onclick = function() {
     PlayStopSound();
 };
 
+// Sound button is pressed, volume is 0ff (0) or on (1).
 function PlayStopSound() {
     if(sound == true){ 
-        sound = false;              // Sound button pressed, volume is off/0
+        sound = false;              
         scoreSound.volume = 0;
         wings.volume = 0;
         hitPipe.volume = 0;
@@ -92,7 +95,7 @@ function PlayStopSound() {
         document.getElementById('sound-button-go').innerHTML="&#xf6a9";
         console.log('stop sound');
     }else{
-        sound = true;               // Sound button pressed, volume is on
+        sound = true;               
         scoreSound.volume = 1;
         wings.volume = 1;
         hitPipe.volume = 1;
@@ -101,12 +104,11 @@ function PlayStopSound() {
         document.getElementById('sound-button-go').innerHTML='&#xf028';
         console.log('play sound');
     }
-  
 }
 document.getElementById('sound-button').innerHTML='&#xf028';
 document.getElementById('sound-button-go').innerHTML='&#xf028';
 
-// position of the background in canvas
+// Position of the background in canvas.
 const bg = {
     sX : 0,
     sY : 0,
@@ -115,14 +117,15 @@ const bg = {
     x : 0,
     y : cvs.height - 226,
     
-    draw : function(){     // with bg.draw in draw function, the image is draw
+    // With bg.draw in draw function, the image is draw.
+    draw : function(){     
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w + this.w, this.y, this.w, this.h);
     }
 };
 
-// position of the forground in canvas
+// Position of the forground in canvas.
 const fg = {
     sX: 276,
     sY: 0,
@@ -133,14 +136,15 @@ const fg = {
 
     dx : 2,
     
-    draw : function(){ // with fg.draw in draw function, the image is draw
+    // With fg.draw in draw function, the image is draw.
+    draw : function(){ 
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w + this.w, this.y, this.w, this.h);
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w + this.w + this.w, this.y, this.w, this.h);
     }, 
     
-    // the forground is moving to the left
+    // With fg.update in update function, the forground is moving to the left.
     update : function() {    
         if(state.current == state.game) {
             this.x = (this.x - this.dx)%(this.w/2);     
@@ -148,7 +152,7 @@ const fg = {
     }
 };
 
-// position of the bird in canvas
+// Position of the bird in canvas.
 const bird = {
     animation : [
         {sX: 277, sY : 114},
@@ -163,14 +167,15 @@ const bird = {
 
     radius : 12,
 
-    frame : 0, // Startframe of the bird
+    frame : 0, // Startframe of the bird.
 
-    gravity : 0.25,     // How fast the bird goes down
-    jump : 5,           // How high the bird jumps
-    speed: 0,           // speed by start begins at 0 with the bird
-    rotation : 0,      
+    gravity : 0.25,     // How fast the bird goes down.
+    jump : 5,           // How high the bird jumps.
+    speed: 0,           // Speed by start begins at 0 with the bird.
+    rotation : 0,       // Rotation by starts begins at 0 with the bird.    
 
-    draw : function() { // with bird.draw in draw function, the image is draw
+    // With bird.draw in draw function, the image is draw.
+    draw : function() { 
         let bird = this.animation[this.frame];
 
         ctx.save();
@@ -185,22 +190,23 @@ const bird = {
         this.speed = - this.jump;  
     },
 
+      // With bird.update in update function, the bird rotates, falls down and flaps.
     update : function() { 
-        // If the game state is in state game, the bird flaps 
+        // If the game state is in state game, the bird flaps.
         this.period = state.current == state.game ? 10 : 0;
-        // we increment the frame by 1, each period (the frames goes after each other)
+        // We increment the frame by 1, each period (the frames goes after each other).
         this.frame += frames%this.period == 0 ? 1 : 0;
-        // Frame goes from 0 to 4, then again to 0
+        // Frame goes from 0 to 4, then again to 0.
         this.frame = this.frame%this.animation.length;
 
         if(state.current == state.getReady){    
-             this.y = 300;                      // Reset position of the bird after game over
-        }else {                                 // When the bird falls to the ground the bird goes faster and with his face down
+             this.y = 300;                      // Reset position of the bird after game over.
+        }else {                                 // When the bird falls to the ground the bird goes faster and with his face down.
             this.speed += this.gravity; 
             this.y += this.speed;
             this.rotation = 0 * DEGREE;
 
-            if(this.y + this.h/2 >= cvs.height - fg.h) { // if the birds hit the ground, the bird rotates 90 degrees
+            if(this.y + this.h/2 >= cvs.height - fg.h) { // If the birds hit the ground, the bird rotates 90 degrees.
                 this.y = cvs.height - fg.h - this.h/2;
                 if (state.current == state.game){
                     state.current = state.over;
@@ -208,22 +214,23 @@ const bird = {
                 }
             }
 
-            // If the speed is greater than the jump means the bird is falling down 
+            // If the speed is greater than the jump means the bird is falling down.
             if(this.speed >= this.jump) {
                 this.rotation = 90 * DEGREE;
-                this.frame = 1;                // stops flying with wings 
+                this.frame = 1;                // Bird stops flying with wings. 
             }else {
                 this.rotation = -25 * DEGREE;
             }
         }
     },
+    // When bird.speedReset is called, the rotation and speed starts at zero.
     speedReset : function(){
         this.speed = 0;
         this.rotation = 0;
     }
 };
 
-// Get ready message
+// Position of the get ready message in canvas.
 const getReady = { 
    sX : 20,
    sY : 10,
@@ -232,6 +239,7 @@ const getReady = {
     x: 120,
     y: 160, 
 
+    // With getReady.draw in draw function, the image is draw.
     draw : function() {
         if(state.current == state.getReady) {
             ctx.drawImage(tap, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
@@ -239,22 +247,22 @@ const getReady = {
     }
 };
 
-// Game over screen 
+// Position of the game over message in canvas.
 const gameOver = { 
     update : function(){
        if(state.current == state.over) {
            console.log('game over');
-           showGameOverScreen(endscreen)  
+           showGameOverScreen(endscreen); 
        }  
     },
 };
 
-// function for game over screen
+// Endscreen pops up when the bird is dead.
 function showGameOverScreen(endscreen){
-    endscreen.style.visibility="visible"
+    endscreen.style.visibility="visible";
 }
 
-// Pipes 
+// Position of the pipes message in canvas.
 const pipes = {
     position : [],
 
@@ -270,10 +278,11 @@ const pipes = {
 
     w : 53, 
     h : 400, 
-    gap : 100,      // the size of the gap 
+    gap : 100,      
     maxYPos : -150,
-    dx : 5,         // the distance and speed between the pipes afstand
+    dx : 5,         // The distance and speed between the pipes.
 
+    // with pipes.draw in draw function, the image is draw.
     draw : function(){
         for(let i  = 0; i < this.position.length; i++){
             let p = this.position[i];
@@ -281,21 +290,22 @@ const pipes = {
             let topYPos = p.y;
             let bottomYPos = p.y + this.h + this.gap;
             
-            // Top pipe
+            // Top pipe is called for draw.
             ctx.drawImage(sprite, this.top.sX, this.top.sY, this.w, this.h, p.x, topYPos, this.w, this.h);  
             
-            // Bottom pipe
+            // Bottom pipe is called for draw.
             ctx.drawImage(sprite, this.bottom.sX, this.bottom.sY, this.w, this.h, p.x, bottomYPos, this.w, this.h);  
         }
     },
 
+    // with pipes.update in update function, the pipes show up with different gaps and if bird hits the pipes the bird is dead.
    update: function(){
         if(state.current !== state.game) return;
         
         if(frames%100 == 0){ 
             this.position.push({
                 x : cvs.width,
-                y : this.maxYPos * ( Math.random() + 1)  // Random gaps shown in game
+                y : this.maxYPos * ( Math.random() + 1)  // Random gaps shown in game.
             });
         }
         for(let i = 0; i < this.position.length; i++){
@@ -303,63 +313,65 @@ const pipes = {
 
             let bottomPipeYPos = p.y + this.h + this.gap;
 
-            // Collision detection | When bird hits a pipe
-            // Top pipe
+            // Collision detection for top pipe | When bird hits a top pipe.
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h){
                 state.current = state.over;
                 hitPipe.play();
             }
-            // Bottom pipe
+            // Collision detection for bottom pipe | When bird hits a bottom pipe.
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h){
                 state.current = state.over;
                 hitPipe.play();
             }
 
-            // Move the pipe to the left 
-            p.x -= this.dx;
+            p.x -= this.dx;     // Moves the pipes to the left. 
 
-            // If the pipe goes beyond the canvas, they will get deleted
+            // If the pipe goes beyond the canvas, they will be deleted.
             if(p.x + this.w <= 0){
                 this.position.shift();
-                score.value += 1;       // If the pipes goed beyond the pipe, the score is +1
+                score.value += 1;       // If the pipes goed beyond the pipe, the score is +1.
                 scoreSound.play();
 
-                score.best = Math.max(score.value, score.best);
-                localStorage.setItem('best', score.best);
+                // The best score is set, and saved in local storage.
+                score.best = Math.max(score.value, score.best);     
+                localStorage.setItem('best', score.best);           
             }
         }
     },
+    // when pipes.reset is called, the pipes start at zero.
     reset : function() {
         this.position = [];
     }
 };
 
-// Score 
+// Setting the score.
 const score = {
     best : parseInt(localStorage.getItem('best')) || 0,
     value : 0,
 
+    // With score.draw in draw function, the image is draw.
     draw : function (){
         ctx.fillStyle = "#e0960a";
         ctx.strokeStyle = "#fff";
 
-        if(state.current == state.game){    // Score in the game
+        if(state.current == state.game){                // Score in the game.
             ctx.lineWidth = 2;
             ctx.font = '70px play';
             ctx.fillText(this.value, cvs.width/2, 80);
             ctx.strokeText(this.value, cvs.width/2, 80);
-        }else if(state.current == state.over){      // Score if game over
+        }else if(state.current == state.over){           // Score in the game in game over state.
             // Score value
             drawScoreboard();
             drawBestScoreboard();
         }
     },
+    // when score.reset is called, the current score starts at zero.
     reset : function() {
         this.value = 0;
     }
 };
 
-// Draw scores on scoreboard
+// Draw current and best scores on scoreboard.
 function drawScoreboard() {
     scoreboard.innerHTML = score.value;
 }
@@ -368,22 +380,19 @@ function drawBestScoreboard() {
     bestScore.innerHTML = score.best;
 }
 
-
-// Draw elements to canvas 
+// Every element with draw : function() is called in this function to handle all the drawings of the element to the canvas.
 function draw(){
-    ctx.fillStyle = "#3B6CB5";                  // Background color 
-    ctx.fillRect(0, 0, cvs.width, cvs.height);  // covering the canvas
-    
+    ctx.fillStyle = "#3B6CB5";                  // Background color
+    ctx.fillRect(0, 0, cvs.width, cvs.height);  // Covering the whole canvas
     bg.draw();
     pipes.draw();
     fg.draw();
     bird.draw();
     getReady.draw();
     score.draw();
-    
 }
 
-// UPDATE
+// Every element with update : function() is called in this function to update the elements.
 function update(){
     bird.update();
     fg.update();
@@ -392,12 +401,11 @@ function update(){
     
 }
 
-// LOOP
-function loop(){
+// The loop function to update the game every second and calls the draw and update function.
+function loop(){        
     update();
     draw();
-    frames++;
-    
-    requestAnimationFrame(loop);
+    frames++;           // Each time the loop function is called, the frames incremates with 1 | Keep track of how many frames are draw to the canvas.
+    requestAnimationFrame(loop);    // Takes a callback function (which is the loop function) and helps by performance of the animations.
 }
 loop();
