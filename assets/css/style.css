@@ -100,7 +100,7 @@ h2 {
     padding-right: 25px;
 }
 
-#play-button-go, #sound-button-go {
+#home-button-go, #play-button-go, #sound-button-go {
     font-size: 25px;
     font-weight: 700;
     color: #fff;
@@ -199,9 +199,6 @@ canvas {
     #instruction {
         margin: 30px;
     }
-    #play-button, #sound-button {
-        font-size: 30px;
-    }
     #scores {
         margin-top: 50px;
     }
@@ -221,9 +218,6 @@ canvas {
     }
     #instruction {
         margin: 30px;
-    }
-    #play-button, #sound-button {
-        font-size: 30px;
     }
     #scores {
         margin-top: 60px;

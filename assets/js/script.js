@@ -3,7 +3,6 @@ const cvs = document.getElementById("bird");
 const ctx = cvs.getContext("2d");
 
 // DOM Elements 
-const startScreen = document.getElementById('startscreen');
 const scoreboard = document.getElementById('scoreboard');
 const bestScore = document.getElementById('bestscoreboard');
 
@@ -40,14 +39,16 @@ const state = {
     over : 2
 };
 
-// Start of game || startscreen 
+// Startscreen | If play button is presses, startscreen is hidden.
 document.getElementById('play-button').onclick = function() {
-    removeStartscreen();
+    startscreen.style.visibility="hidden";
 };
 
-function removeStartscreen() {
-    startScreen.remove();
-}
+// Endscreen | If home button is presses, back to startscreen and reset game
+document.getElementById('home-button-go').onclick = function() {
+    startscreen.style.visibility="visible";
+    playagain();
+};
 
 // Sound on and off 
 document.getElementById('sound-button').onclick = function() {
