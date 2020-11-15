@@ -2,16 +2,16 @@
 const cvs = document.getElementById("bird");
 const ctx = cvs.getContext("2d");
 
-// DOM Elements | Getting elements by id for variable.
+// DOM Elements | Getting elements by id for variables in js.
 const scoreboard = document.getElementById('scoreboard');
 const bestScore = document.getElementById('bestscoreboard');
+const startscreen = document.getElementById('startscreen');
+const endscreen = document.getElementById('endscreen');
 
 // Variables of game
 let frames = 0;
 const DEGREE = Math.PI/180;
-var sound = true;
-const endscreen;
-const startscreen;
+let sound = true;
 
 // Load sounds effects
 const scoreSound = new Audio("assets/audio/sfx_point.wav");
