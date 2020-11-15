@@ -57,6 +57,7 @@ document.getElementById('sound-button-go').onclick = function() {
     PlayStopSound();
 };
 
+// Still in progress
 function PlayStopSound() {
     if(sound == true){
         sound = false;
@@ -147,7 +148,7 @@ const bird = {
         {sX: 277, sY : 164},
         {sX: 277, sY : 139}
     ],
-    x : 180,
+    x : 210,
     y : 280,
     w : 34,
     h : 26,
@@ -219,7 +220,7 @@ const getReady = {
    sY : 10,
     w: 631,
     h: 335,
-    x: 100,
+    x: 120,
     y: 160, 
 
     draw : function() {
@@ -234,7 +235,7 @@ const gameOver = {
     update : function(){
        if(state.current == state.over) {
            console.log('game over');
-           showGameOverScreen(endscreen)
+                showGameOverScreen(endscreen)  
        }  
     },
 };
@@ -243,8 +244,6 @@ const gameOver = {
 function showGameOverScreen(endscreen){
     endscreen.style.visibility="visible"
 }
-
-
 
 // Pipes 
 const pipes = {
