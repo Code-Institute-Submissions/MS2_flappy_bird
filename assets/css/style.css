@@ -118,6 +118,11 @@ h2 {
     padding-right: 25px;
 }
 
+#play-button:hover, #sound-button:hover, #home-button-go:hover, #play-button-go:hover, #sound-button-go:hover {
+    background-color: #e8a119;
+
+}
+
 #scores {
     background-color: #e0960a;
     border: 3px solid #fff;
