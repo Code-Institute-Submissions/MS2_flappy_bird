@@ -82,45 +82,20 @@ h2 {
     padding: 20px;
 }
 
-#play-button, #sound-button {
+#play-button, #sound-button, #home-button-go, #play-button-go, #sound-button-go {
     font-size: 25px;
-    font-weight: 700;
     color: #fff;
     background-color: #e0960a;
     border: 2px solid #fff;
     border-radius: 5px;
     margin: 15px;
     padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#sound-button {
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
-#home-button-go, #play-button-go, #sound-button-go {
-    font-size: 25px;
-    font-weight: 700;
-    color: #fff;
-    background-color: #e0960a;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    margin: 15px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#sound-button-go {
     padding-left: 25px;
     padding-right: 25px;
 }
 
 #play-button:hover, #sound-button:hover, #home-button-go:hover, #play-button-go:hover, #sound-button-go:hover {
     background-color: #e8a119;
-
 }
 
 #scores {

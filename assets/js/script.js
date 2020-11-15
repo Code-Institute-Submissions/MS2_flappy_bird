@@ -100,7 +100,8 @@ function PlayStopSound() {
         document.getElementById('sound-button').innerHTML='&#xf028';
         document.getElementById('sound-button-go').innerHTML='&#xf028';
         console.log('play sound');
-    }  
+    }
+  
 }
 document.getElementById('sound-button').innerHTML='&#xf028';
 document.getElementById('sound-button-go').innerHTML='&#xf028';
