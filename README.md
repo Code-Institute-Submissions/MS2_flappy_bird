@@ -71,7 +71,7 @@ I have chosen these colours because the colours match with the game and the avat
 The backgroundcolour for the game 
 - ![#3b6cb5 ](https://via.placeholder.com/15/3b6cb5/000000?text=+) #3b6cb5 (Dark Blue)
 
-This colour is chosen for the background of the game. The dark blue represents the sky where the bird flies into. 
+This colour is chosen for the background of the game. The dark blue represents the sky where the bird flies into. The blue is a little bit darker to create a kind of nighttime vibe.
 
 - #### Fonts
 The **press to start 2p** font and  **play** font are used throughout the whole game. Sans Serif is the fallback in case the main font isn’t being imported to the site correctly. The press to start 2p fonts is used for the titel of the game, the get ready text and the game over text. This font is used because the font gives an old school game vibe. The play font is used for the instructions, the text on the buttons and the scores in the game. The play font is easy to read and matches good with the press start 2p.
@@ -93,7 +93,6 @@ Click on the links below to see the mockups in Figma.
 |    Mobile   |    Tablet    |    Desktop   |
 |    :----:    |     :----:   |    :----:    |
 |[Flappy Bird](https://www.figma.com/file/kGjKyA8CrNuFJ6WkrxcsGn/Flappy-bird?node-id=0%3A1)|[Flappy Bird](https://www.figma.com/file/kGjKyA8CrNuFJ6WkrxcsGn/Flappy-bird?node-id=1%3A2)|[Flappy Bird](https://www.figma.com/file/kGjKyA8CrNuFJ6WkrxcsGn/Flappy-bird?node-id=4%3A643)|
-
 
 <span id="features"></span>
 
@@ -137,7 +136,8 @@ Click on the links below to see the mockups in Figma.
 #### Game Over screen 
 - The game over screen shows the current score and the best score of the player. 
 - The game over screen shows the music button to turn the sound off or on. 
-- the game over screen shows the play button. With the button the player can play the game again.
+- The game over screen shows the play button. With the button the player can play the game again.
+- The game over screen shows a home button. The player comes to the start screen of the game. 
 
 <span id="features-future"></span>
 
@@ -177,14 +177,13 @@ Click on the links below to see the mockups in Figma.
 - [W3C CSS validator](https://jigsaw.w3.org/css-validator/)
     - The W3C CSS validator is used to check whether there were any errors in the CSS3 code.
 - [JShint](https://jshint.com/)
-- JShint is a JavaScript validator dat is used to check wheter there were any errors in the JavaScript code. 
-
+    - JShint is a JavaScript validator dat is used to check wheter there were any errors in the JavaScript code. 
 
 <span id="testing"></span>
 
 <h1>4. Testing</h1>
 
-The testing process can be found [here](URL....).
+The testing process can be found [here](TESTING.md).
 
 <span id="deployment"></span>
 
@@ -215,16 +214,21 @@ To clone this project from GitHub:
 
 #### Content 
 - All text within the game is original content.
-- The developer took inspiration of several tutorials. 
+- The developer took inspiration of several tutorials and other resources.
 
 **Tutorials**
-- [Create The Original Flappy Bird Game Using JavaScript and HTML5 canvas](https://youtu.be/0ArCFchlTq4)
+- [Create The Original Flappy Bird Game Using JavaScript and HTML5 canvas](https://youtu.be/0ArCFchlTq4) - This tutorial is an excellent tutorial for the Flappy Bird game. It was my biggest inspiration for the project.
 - [We make FLAPPY BIRD + DEPLOY it on IPFS in 1min! Built in JavaScript, HTML and CSS (No Canvas!)](https://youtu.be/gxHcW84izz0)
 - [The Easiest Flappy Bird Tutorial Ever? - Beginner Javascript Game](https://youtu.be/3SsYZDJdeXk)
-- [JavaScript - Snake - 46 Setting the Visibility of the Game Over Menu](https://youtu.be/dTevI-K-DPQ)
+- [HTML5 Canvas Tutorial for Beginners | An Intro to Becoming a Pro - Ep. 1](https://youtu.be/EO6OkltgudE)
+- [Canvas Tutorial: Fit to Screen](https://youtu.be/InrYeaIyKhY)
 - [JavaScript - Snake - 55 Updating the Scoreboard Text](https://youtu.be/Y7DAZyUOWuU)
-- [JS Asteroids Game Part 7 (Sound Effects and “Music”)](https://youtu.be/LfSBbrGqFV0)
-- [Audio Play Pause and Stop using JavaScript | Play Audio using JavaScript](https://youtu.be/wffK2OIt8u0)
+- [Animate Your Font Awesome Icons With JavaScript](https://youtu.be/XP-MRCUPZao)
+
+**Other resources**
+- [W3Schools: HTML Audio/Video DOM volume Property](https://www.w3schools.com/tags/av_prop_volume.asp)
+- [W3Schools: Style visibility Property](https://www.w3schools.com/jsref/prop_style_visibility.asp)
+- [W3Schools: Onclick Event](https://www.w3schools.com/jsref/event_onclick.asp)
 
 #### Media & Audio 
 - The bird, the pipes, the buildings and the ground images are from Code Explained on their [Original-Flappy-Bird-Javascript repositry](https://github.com/CodeExplainedRepo/Original-Flappy-bird-JavaScript). The original pipes and gound are edited by the developer to another colour.
@@ -234,3 +238,4 @@ To clone this project from GitHub:
 Thanks to the following people or organizations who helped or inspired me for the project.  
 - The support and guidance of my mentor Precious Ijege. 
 - The lessons and knowledge of [Code Institute.](https://codeinstitute.net/)
+- The advice about a bug of the game over screen of Haley from the Tutor Assistance.
