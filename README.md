@@ -8,7 +8,7 @@ The purpose of the game is to make a bird fly while avoiding pipes. The bird is 
 
 This version of the game offers the classic Flappy Bird gameplay (without the medals), a clean interface, and a simple design (which is inspired by the original game). If you enjoy the game by playing it, the game has achieved its purpose! 
 
-**Disclaimer:** The flappy bird game is developed for educational purposes.
+**Disclaimer:** The Flappy Bird game is developed for educational purposes.
 
 This project is the second out of four Milestone Projects in the Full Stack Web Development Program I am attending at The Code Institute. 
 
