@@ -51,7 +51,7 @@ This project is the second out of four Milestone Projects in the Full Stack Web 
 **As a player I want:**
 1. As a player, I want to easily understand the game. 
 2. As a player, I want to have access to the instructions of the game. 
-3. As a player, I want to play an interactive game that challenges myself to get a high score. 
+3. As a player, I want to play an interactive game that challenges myself to get a higher score. 
 4. As a player, I want to be able to play the game multiple times.
 5. As a player, I want to turn the music on and off. 
 6. As a player, I want to play the game on every device and internet browser. 
@@ -102,9 +102,9 @@ Click on the links below to see the mockups in Figma.
 
 ### 2.1 Existing features 
 
-#### 1. Start screen 
+#### 1. Startscreen 
 - On the start screen is a short instruction of the game for desktop and mobile/tablet. 
-- On the start screen the music can be turned off and on. 
+- On the starts screen the music can be turned off and on. 
 - On the start screen there is a play button to start the game. 
 
 #### 2. Responsive HTML Canvas
