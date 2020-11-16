@@ -14,17 +14,20 @@ const DEGREE = Math.PI/180;
 let sound = true;
 
 // Load sounds effects
+// Audio files are from https://github.com/CodeExplainedRepo/Original-Flappy-bird-JavaScript/tree/master/audio
 const scoreSound = new Audio("assets/audio/sfx_point.wav");
 const wings = new Audio("assets/audio/sfx_flap.wav");
 const hitPipe = new Audio("assets/audio/sfx_hit.wav");
 const dead = new Audio("assets/audio/sfx_die.wav");
 
 // Load images
+// Image file of sprite is from https://github.com/CodeExplainedRepo/Original-Flappy-bird-JavaScript/tree/master/img
+// The original pipes and the ground from the sprite image are edited by the developer to another colour. 
 const sprite = new Image();
 sprite.src = "assets/images/sprite.png";
 
-const tap = new Image();
-tap.src = "assets/images/tap.png";
+const tapToBegin = new Image();
+tapToBegin.src = "assets/images/tap.png";
 
 // Game states
 const state = {
@@ -67,7 +70,6 @@ document.getElementById('play-button-go').onclick = function() {
 
 // Restarts the game. 
 function playagain() {
-    console.log('play again');
     endscreen.style.visibility="hidden";
     bird.speedReset();
     pipes.reset();
@@ -77,14 +79,14 @@ function playagain() {
 
 // Turn the sound off or on.
 document.getElementById('sound-button').onclick = function() {
-    PlayStopSound();
+   playStopSound();
 };
 document.getElementById('sound-button-go').onclick = function() {
-    PlayStopSound();
+    playStopSound();
 };
 
 // Sound button is pressed, volume is 0ff (0) or on (1).
-function PlayStopSound() {
+function playStopSound() {
     if(sound == true){ 
         sound = false;              
         scoreSound.volume = 0;
@@ -93,7 +95,6 @@ function PlayStopSound() {
         dead.volume = 0;
         document.getElementById('sound-button').innerHTML="&#xf6a9";
         document.getElementById('sound-button-go').innerHTML="&#xf6a9";
-        console.log('stop sound');
     }else{
         sound = true;               
         scoreSound.volume = 1;
@@ -102,7 +103,6 @@ function PlayStopSound() {
         dead.volume = 1;
         document.getElementById('sound-button').innerHTML='&#xf028';
         document.getElementById('sound-button-go').innerHTML='&#xf028';
-        console.log('play sound');
     }
 }
 document.getElementById('sound-button').innerHTML='&#xf028';
@@ -242,7 +242,7 @@ const getReady = {
     // With getReady.draw in draw function, the image is draw.
     draw : function() {
         if(state.current == state.getReady) {
-            ctx.drawImage(tap, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
+            ctx.drawImage(tapToBegin, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         }
     }
 };
@@ -251,7 +251,6 @@ const getReady = {
 const gameOver = { 
     update : function(){
        if(state.current == state.over) {
-           console.log('game over');
            showGameOverScreen(endscreen); 
        }  
     },

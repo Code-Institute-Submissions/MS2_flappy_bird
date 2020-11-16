@@ -88,7 +88,7 @@ h2 {
     background-color: #e0960a;
     border: 2px solid #fff;
     border-radius: 5px;
-    margin: 15px;
+    margin: 10px;
     padding: 5px;
     padding-left: 25px;
     padding-right: 25px;
@@ -221,8 +221,7 @@ canvas {
         width: 80%;
     }
     #gameover {
-        padding: 10px;
-        padding-top: 5px;
+        padding-top: 0px;
     }
     #gameover-text {
         font-size: 30px;
