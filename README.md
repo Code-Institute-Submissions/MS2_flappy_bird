@@ -102,7 +102,7 @@ Click on the links below to see the mockups in Figma.
 
 ### 2.1 Existing features 
 
-#### 1. Startscreen 
+#### 1. Start screen 
 - On the start screen is a short instruction of the game for desktop and mobile/tablet. 
 - On the starts screen the music can be turned off and on. 
 - On the start screen there is a play button to start the game. 
