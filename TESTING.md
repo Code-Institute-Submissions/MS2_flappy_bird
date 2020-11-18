@@ -29,7 +29,7 @@
 ![Browser compatibility](readme-testing/browser-compatibility.png)
 
 ### Notes 
-- The sound effects of the game don't coincide with the actions when the sound effect should be played. The sound is delayed and comes a second later.
+- The sound in safari is mediocre. The sound effects of the game don't coincide with the actions when the sound effect should be played. The sound is delayed and comes a second later.
 --- 
 
 ## Testing user stories 
