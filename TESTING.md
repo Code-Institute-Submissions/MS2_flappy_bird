@@ -61,7 +61,7 @@
 2. As a player, I want to have access to the instructions of the game.
     -  **Respondent 1:** Yes, I have acces to the instructions of the game. It is simple and easy, see my answer at the first question. 
     -  **Respondent 2:** I had acces to the instruction, they were already standing at the beginning of the game. 
-    -  **Respondent 3:**The instructions were very easy to found and easy to understand. I only had to use my left mouse button.
+    -  **Respondent 3:** The instructions were very easy to found and easy to understand. I only had to use my left mouse button.
 3. As a player, I want to play an interactive game that challenges myself to get a higher score.
     -  **Respondent 1:** Yes, trying to beat a personal record or high score will keep me involved in the game. When such a goal is absent, I'll have less of an incentive to continue the game. 
     -  **Respondent 2:** I like to challenge myself by getting a higher score. What I would have liked even more is to get 'prices' for achieving certain scores.
@@ -86,7 +86,15 @@
 3. A bug was found in responsive design for iPhone 5/SE. **The start screen and game over screen didn't fully appear** in the screen of the iPhone 5/SE.
     - The buttons of the start and game over screen didn't fully show in the screen. This bug was fixes by setting a media querie specially for the iPhone 5/SE.
 4. A bug was found in showing the game over screen when the bird hits a pipe (game over). **The game over screen didn't appear.**
-    - The game over screen was called by endscreen.style.visibility="visible"; but the game over screen didn't appear. The bug was fixed by using a function and puting the endscreen.style.visibility="visible"; inside that function. In the if statement of game over the function is called instead of endscreen.style.visibility="visible";.
+    - The game over screen was called by 
+    ```
+    endscreen.style.visibility="visible";
+    ``` 
+    but the game over screen didn't appear. The bug was fixed by using a function and puting the 
+    ``` 
+    endscreen.style.visibility="visible";
+    ```
+    inside that function. In the if statement of game over, the function is called instead of the element where visibility is called.
 5. A bug was found with the bird. **The bird was already flapping when the bird was in the get ready state, but the bird had to be fixed.**
     - The flapping of the bird was set at 5, which means that the bird was flapping slowly in the get ready state. The bug was fixed by changing the 5 to 0. The 0 means that the bird is fixed at the get ready state. 
 
