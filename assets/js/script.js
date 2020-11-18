@@ -9,7 +9,7 @@ const startscreen = document.getElementById('startscreen');
 const endscreen = document.getElementById('endscreen');
 
 // Variables of game
-let frames = 0;
+let framework = 0;
 const DEGREE = Math.PI/180;
 let sound = true;
 
@@ -194,8 +194,8 @@ const bird = {
     update : function() { 
         // If the game state is in state game, the bird flaps.
         this.period = state.current == state.game ? 10 : 0;
-        // We increment the frame by 1, each period (the frames goes after each other).
-        this.frame += frames%this.period == 0 ? 1 : 0;
+        // We increment the frame by 1, each period (the framework goes after each other).
+        this.frame += framework%this.period == 0 ? 1 : 0;
         // Frame goes from 0 to 4, then again to 0.
         this.frame = this.frame%this.animation.length;
 
@@ -301,7 +301,7 @@ const pipes = {
    update: function(){
         if(state.current !== state.game) return;
         
-        if(frames%100 == 0){ 
+        if(framework%100 == 0){ 
             this.position.push({
                 x : cvs.width,
                 y : this.maxYPos * ( Math.random() + 1)  // Random gaps shown in game.
@@ -404,7 +404,7 @@ function update(){
 function loop(){        
     update();
     draw();
-    frames++;           // Each time the loop function is called, the frames incremates with 1 | Keep track of how many frames are draw to the canvas.
+    framework++;           // Each time the loop function is called, the framework incremates with 1 | Keep track of how many frames are draw to the canvas.
     requestAnimationFrame(loop);    // Takes a callback function (which is the loop function) and helps by performance of the animations.
 }
 loop();
