@@ -155,7 +155,7 @@ Click on the links below to see the mockups in Figma.
 - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
     - CSS3 provides the style of the HTML5 elements.
 - [Javascript](https://en.wikipedia.org/wiki/JavaScript)
- - JavaScript provides the interactivity of the project. 
+    - JavaScript provides the interactivity of the project. 
 
 #### Frameworks, libraries & programs used
 - [Gitpod](https://www.gitpod.io/) 
